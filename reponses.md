@@ -8,3 +8,11 @@
 4. Commande utilisée pour afficher l'historique sous forme graphique : `git log --oneline --graph --decorate --all`
 
 Commande utilisée pour examiner précisément un commit de la fonctionnalité Contact : `git show c7ca6c2`
+
+## Mission 8 - Commit local incorrect
+
+Commande choisie : `git reset HEAD~1` (équivalent de `git reset --mixed HEAD~1`). Elle convient ici car le commit « Test affichage » n'a été partagé avec personne : on peut donc le retirer de l'historique sans gêner d'autres développeurs.
+
+Les modifications sont toujours présentes car `git reset` en mode mixte déplace la branche sur le commit précédent et vide la zone de staging, mais ne touche pas aux fichiers de la zone de travail. La règle est donc restée dans `style.css`, comme modification non indexée.
+
+La méthode qui aurait aussi supprimé les modifications du fichier est `git reset --hard HEAD~1`.
