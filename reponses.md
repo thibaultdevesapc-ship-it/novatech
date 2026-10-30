@@ -30,3 +30,19 @@ Commande utilisée : `git cherry-pick bcbe4c5`
 Identifiant du commit récupéré : `bcbe4c5` sur la branche `test/experimentations`. Le cherry-pick crée sur `main` un nouveau commit avec le même contenu, mais un identifiant différent.
 
 Une fusion classique n'était pas adaptée car elle aurait intégré tous les commits de la branche de test, y compris les couleurs expérimentales et le texte de test du pied de page. Le cherry-pick permet de ne récupérer que la correction orthographique.
+
+## Mission 12 - Version stable
+
+Tag créé sur le commit `05d3de2` avec `git tag -a v1.0.0 -m "Première version stable de NovaTech"`, puis affiché avec `git show v1.0.0`.
+
+Signification des trois nombres de 1.0.0 (versionnage sémantique) :
+
+- 1 : version majeure, augmentée lors de changements incompatibles avec la version précédente
+- 0 : version mineure, augmentée lors de l'ajout de fonctionnalités compatibles
+- 0 : version de correctif, augmentée lors de corrections de bugs compatibles
+
+Version suivante selon le cas :
+
+- Correction de bug mineur : 1.0.1
+- Nouvelle fonctionnalité compatible : 1.1.0
+- Refonte majeure incompatible : 2.0.0
