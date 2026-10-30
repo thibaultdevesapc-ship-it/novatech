@@ -22,3 +22,11 @@ La méthode qui aurait aussi supprimé les modifications du fichier est `git res
 Commande utilisée : `git revert ce8a971`
 
 La méthode est différente de celle de la mission 8 car le commit « Ajout promotion » est considéré comme déjà récupéré par d'autres membres de l'équipe. `git reset` réécrirait l'historique et désynchroniserait leurs dépôts. `git revert` crée au contraire un nouveau commit qui applique l'inverse de la modification : l'historique reste intact, le commit « Ajout promotion » y figure toujours, et tout le monde peut récupérer l'annulation normalement.
+
+## Mission 11 - Correction isolée
+
+Commande utilisée : `git cherry-pick bcbe4c5`
+
+Identifiant du commit récupéré : `bcbe4c5` sur la branche `test/experimentations`. Le cherry-pick crée sur `main` un nouveau commit avec le même contenu, mais un identifiant différent.
+
+Une fusion classique n'était pas adaptée car elle aurait intégré tous les commits de la branche de test, y compris les couleurs expérimentales et le texte de test du pied de page. Le cherry-pick permet de ne récupérer que la correction orthographique.
