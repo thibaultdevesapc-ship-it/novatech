@@ -16,3 +16,9 @@ Commande choisie : `git reset HEAD~1` (équivalent de `git reset --mixed HEAD~1`
 Les modifications sont toujours présentes car `git reset` en mode mixte déplace la branche sur le commit précédent et vide la zone de staging, mais ne touche pas aux fichiers de la zone de travail. La règle est donc restée dans `style.css`, comme modification non indexée.
 
 La méthode qui aurait aussi supprimé les modifications du fichier est `git reset --hard HEAD~1`.
+
+## Mission 9 - Commit partagé à annuler
+
+Commande utilisée : `git revert ce8a971`
+
+La méthode est différente de celle de la mission 8 car le commit « Ajout promotion » est considéré comme déjà récupéré par d'autres membres de l'équipe. `git reset` réécrirait l'historique et désynchroniserait leurs dépôts. `git revert` crée au contraire un nouveau commit qui applique l'inverse de la modification : l'historique reste intact, le commit « Ajout promotion » y figure toujours, et tout le monde peut récupérer l'annulation normalement.
