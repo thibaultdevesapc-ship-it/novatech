@@ -46,3 +46,49 @@ Version suivante selon le cas :
 - Correction de bug mineur : 1.0.1
 - Nouvelle fonctionnalité compatible : 1.1.0
 - Refonte majeure incompatible : 2.0.0
+
+## Questions finales
+
+### 1. Quelle différence existe-t-il entre la zone de travail, la zone de staging et l'historique ?
+
+La zone de travail contient les fichiers tels qu'on les modifie sur le disque. La zone de staging (ou index) prépare le prochain commit : on y place avec `git add` les modifications à enregistrer. L'historique contient les commits, c'est-à-dire les versions enregistrées du projet.
+
+### 2. Pourquoi est-il préférable de réaliser une fonctionnalité sur une branche dédiée ?
+
+Une branche dédiée isole le travail en cours : la branche principale reste stable et fonctionnelle pendant le développement. On peut faire plusieurs commits, tester ou abandonner la fonctionnalité sans gêner le reste du projet, puis l'intégrer une fois terminée.
+
+### 3. Quelle différence fondamentale existe-t-il entre les deux méthodes d'annulation utilisées dans les missions 8 et 9 ?
+
+`git reset` (mission 8) déplace la branche sur un commit antérieur : le commit annulé disparaît de l'historique de la branche, qui est donc réécrit. `git revert` (mission 9) ajoute un nouveau commit qui applique l'inverse de la modification : l'historique existant est conservé. On réserve donc `reset` aux commits locaux non partagés et on utilise `revert` pour les commits déjà partagés.
+
+### 4. Dans quelle situation est-il utile de mettre temporairement ses modifications de côté ?
+
+C'est utile quand on doit changer de tâche ou de branche alors que le travail en cours n'est pas prêt à être commité, par exemple pour une correction urgente. `git stash` met les modifications de côté et laisse un dépôt propre, puis `git stash pop` permet de les récupérer.
+
+### 5. Pourquoi la récupération d'un commit précis peut-elle être préférable à la fusion complète d'une branche ?
+
+Une fusion intègre tous les commits de la branche, y compris ceux qui ne sont pas prêts ou pas souhaités. `git cherry-pick` permet de ne récupérer qu'une modification précise, comme une correction, sans importer le reste.
+
+### 6. À quoi sert HEAD ?
+
+HEAD est un pointeur vers la position actuelle dans le dépôt : il désigne en général la branche active, et donc son dernier commit. C'est le commit sur lequel se base le prochain commit.
+
+### 7. Que représente HEAD~2 ?
+
+HEAD~2 désigne le commit situé deux générations avant HEAD, en suivant le premier parent de chaque commit : c'est le grand-parent de HEAD.
+
+### 8. À quoi sert un tag Git ?
+
+Un tag marque un commit précis avec un nom stable, généralement pour identifier une version comme `v1.0.0`. Contrairement à une branche, il ne se déplace pas. Un tag annoté contient aussi un auteur, une date et un message.
+
+### 9. Pourquoi des commits petits et précis facilitent-ils la maintenance d'un projet ?
+
+Ils rendent l'historique plus lisible et les modifications plus faciles à relire. Il est aussi plus simple de retrouver l'origine d'un bug, d'annuler une seule modification avec `git revert` ou d'en récupérer une seule avec `git cherry-pick`.
+
+### 10. Pourquoi certains fichiers ne doivent-ils pas être versionnés ?
+
+Certains fichiers contiennent des données sensibles, comme les mots de passe ou clés d'un `.env`, qui ne doivent pas se retrouver dans l'historique. D'autres sont générés automatiquement, comme les logs et le cache : ils alourdissent le dépôt, changent souvent, dépendent de chaque machine et n'ont pas d'intérêt pour le projet.
+
+## Réalisation
+
+Ce TP a été réalisé avec Claude Code : les commits comportent la mention `Co-Authored-By: Claude`.
